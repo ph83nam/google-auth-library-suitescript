@@ -2,14 +2,34 @@
   "name": "google-auth-library",
   "version": "0.10.0",
   "author": "Google Inc.",
-  "description": "Google APIs Authentication Client Library for Node.js",
+  "description": "Google APIs Authentication Client Library for SuiteScript",
   "engines": {
     "node": ">=0.10"
   },
   "main": "./lib/auth/googleauth",
+  "browser": {
+    "fs": false,
+    "request": "./lib/ss/request.js"
+  },
+  "browserify": { 
+    "transform": [
+      "browserify-swap",
+      "./dist-tools/ss-transform.js"
+    ]
+  },
+  "browserify-swap": {
+    "@packages": [
+      "request",
+      "google-p12-pem"
+    ],
+    "bundle": {
+      ".*node_modules\/request\/.+\\.js$": "./lib/ss/request.js",
+      ".*node_modules\/google-p12-pem\/.+\\.js$": "./lib/ss/empty.js"
+    }
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/google/google-auth-library-nodejs.git"
+    "url": "https://github.com/ph83nam/google-auth-library-suitescript.git"
   },
   "keywords": [
     "google",
@@ -27,6 +47,10 @@
   "devDependencies": {
     "coveralls": "^2.11.15",
     "istanbul": "^0.4.5",
+    "browserify": "13.3.x",
+    "browserify-swap": "0.2.x",
+    "watchify": "3.8.x",
+    "uglify-js": "2.x",
     "keypair": "^1.0.0",
     "jshint": "^2.9.4",
     "jsdoc": "^3.4.3",
