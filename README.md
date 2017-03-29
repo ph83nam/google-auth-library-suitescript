@@ -1,3 +1,5 @@
+*This repository has been replaced with [google-auth-library-netsuite](https://github.com/icarebenefits/google-auth-library-netsuite) to use [google-auth-library](https://github.com/google/google-auth-library-nodejs) as a dependency, and to add support for SuiteScript 1.0*
+
 # Google Authentication APIs for SuiteScript
 
 [Documentation](https://cloud.google.com/nodejs/getting-started/authenticate-users) and [source code](https://github.com/google/google-auth-library-nodejs) by Google
